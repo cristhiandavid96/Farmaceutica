@@ -3,6 +3,7 @@
     <div class="md:px-32 py-8 w-full">
       <div class="shadow overflow-hidden rounded border-b border-gray-200">
         <form v-on:submit.prevent="addRows" method="POST">
+        <span v-if="validatioDate" style="color:red">Ya existe un promocion para este dia</span>
         <div class="shadow overflow-hidden sm:rounded-md">
           <div class="px-4 py-5 bg-white sm:p-6">
             <div class="grid grid-cols-6 gap-6">
@@ -42,17 +43,36 @@
 
 <script>
 export default {
-
+  props:['promociones'],
   data(){
     return {
-      promocion:{}
+      promocion:{},
+      validatioDate:false
     }
   },
   methods:{
-    addRows(){
+    validaDate(fecha_inicio,fecha_fin){
+      var bandera = false;
+      this.promociones.map(function(x) {
+        if(x.fecha_inicio.trim() ==fecha_inicio.trim() || x.fecha_fin.trim() == fecha_fin.trim() ){
+            bandera =true
+        }
+      });
+      if (bandera) {
+        this.validatioDate = true
+      }else{
+        this.validatioDate = false
+      }
+    },
+    addRows(){      
       if(!this.promocion.fecha_fin && !this.promocion.porcentaje &&  !this.promocion.descripcion && !this.promocion.fecha_inicio ){
         return false;
+      }     
+      this.validaDate(this.promocion.fecha_inicio,this.promocion.fecha_fin)  
+       if(this.validatioDate===true){
+        return false;
       }
+
       var data = {
       fecha_fin:this.promocion.fecha_fin,
       porcentaje:this.promocion.porcentaje,

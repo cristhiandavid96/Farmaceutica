@@ -3,6 +3,7 @@ import Home from '../components/dahsboard/dahsboard.vue'
 import Facturacion from '../pages/Facturacion/index.vue'
 import Promocion from '../pages/Promocion/index.vue'
 import medicamentos from '../pages/medicamentos/index.vue'
+import Reporte from '../pages/Reporte/index.vue'
 
 const routes = [
     {
@@ -24,6 +25,11 @@ const routes = [
         path: '/medicamento',
         name: 'medicamentos',
         component: medicamentos,
+    },
+    {
+        path: '/reportes',
+        name: 'reportes',
+        component: Reporte,
     },
 ]
 

@@ -61,6 +61,7 @@ export default {
           this.promociones = [];
           if (Object.keys(data).length > 0) {
             this.promociones = data;
+            this.$emit('newlist',this.promociones)
           }
         })
         .catch(console.log);

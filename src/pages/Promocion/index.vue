@@ -50,8 +50,8 @@
       </div>
 
       <div class="main-content flex-1 bg-gray-100 mt-12 md:mt-2 pb-24 md:pb-5">
-        <Crear/>
-        <Listar/>
+        <Crear :promociones="listar()"/>
+        <Listar v-on:newlist="updateList($event)"/>
       </div>
     </div>
   </div>
@@ -64,6 +64,20 @@ export default {
   name: 'app',
   components: {
     Listar,Crear
+  },
+  data(){
+    return {
+      listaPromociones:[]
+    }
+  },
+  methods:{
+    updateList(param){
+      this.listaPromociones= param;
+    },
+    listar(){
+        return this.listaPromociones;
+    }
+
   }
 }
 </script>
