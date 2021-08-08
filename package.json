@@ -7,8 +7,10 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "dayjs": "^1.10.6",
     "vue": "^3.1.5",
     "vue-router": "^4.0.10",
+    "vue-tailwind-picker": "^2.0.0",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
