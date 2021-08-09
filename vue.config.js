@@ -1,3 +1,3 @@
 module.exports = {
-    publicPath:'Farmaceutica/docs/'
+    publicPath:'./'
 }
